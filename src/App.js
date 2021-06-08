@@ -1,9 +1,9 @@
 import './App.css';
-import {Content} from 'components/Content.js';
+import MainMenu from './components/MainMenu';
 
 function App() {
   return (
-    <Content/>
+    <MainMenu/>
   );
 }
 

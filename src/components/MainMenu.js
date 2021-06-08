@@ -4,8 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -22,9 +20,12 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  bar: {
+    background: '#000'
+  }
 }));
 
-export default function Content() {
+export default function MainMenu() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -44,19 +45,13 @@ export default function Content() {
 
   return (
     <div className={classes.root}>
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Photos
+            Home
+          </Typography>
+          <Typography variant="h6" className={classes.title}>
+            Contact
           </Typography>
           {auth && (
             <div>
@@ -67,7 +62,6 @@ export default function Content() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
               </IconButton>
               <Menu
                 id="menu-appbar"
