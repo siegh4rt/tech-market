@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ItemCount() {
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(1)
     const classes = useStyles();
 
  return (
