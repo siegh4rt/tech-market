@@ -17,7 +17,7 @@ export default function ItemCount() {
  return (
    <Grid container className={classes.root} spacing={2}>
     <Button onClick={() => setCount(count - 1)}>-</Button>
-    <div>{count}</div>
+        <div>{count}</div>
     <Button onClick={() => setCount(count + 1)}>+</Button>
    </Grid>
  )
