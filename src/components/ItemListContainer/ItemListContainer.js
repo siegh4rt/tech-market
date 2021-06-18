@@ -1,12 +1,13 @@
 import React from 'react';
 import ItemCount from '../ItemCount/ItemCount';
-import ItemList from '../ItemList/ItemList'
+
+const data = [
+    {
+        name: 'televisor',
+        quantity: 4
+    }
+]
 
 export default function ItemListContainer() {
-    return (
-        <>
-            <ItemCount/>
-            <ItemList/>
-        </>
-    )
+    return <ItemCount  data={data}/>
 }
