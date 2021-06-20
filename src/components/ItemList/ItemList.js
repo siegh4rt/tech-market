@@ -13,12 +13,12 @@ const useStyles = makeStyles({
 })
 
 const arr = [
-    { productName: 'Hamburguer', price: '22000', description: 'Hamburguer description' },
-    { productName: 'frie wing chickes', price: '14000', description: 'frie wing chickens description' },
-    { productName: 'hot dog', price: '9000', description: 'hot dog' },
-    { productName: 'hawaian pizza', price: '30000', description: 'hawaian pizza' },
-    { productName: 'Hamburguer', price: '22000', description: 'Hamburguer description' },
-    { productName: 'frie wing chickes', price: '14000', description: 'frie wing chickens description' },
+    { productName: 'Hamburguer', price: '22000', description: 'Hamburguer description', quantity: 4 },
+    { productName: 'frie wing chickes', price: '14000', description: 'frie wing chickens description', quantity: 4 },
+    { productName: 'hot dog', price: '9000', description: 'hot dog', quantity: 4 },
+    { productName: 'hawaian pizza', price: '30000', description: 'hawaian pizza', quantity: 4},
+    { productName: 'Hamburguer', price: '22000', description: 'Hamburguer description', quantity: 4 },
+    { productName: 'frie wing chickes', price: '14000', description: 'frie wing chickens description', quantity: 4 },
     { productName: 'hot dog', price: '9000', description: 'hot dog' },
     { productName: 'hawaian pizza', price: '30000', description: 'hawaian pizza' }
 ]

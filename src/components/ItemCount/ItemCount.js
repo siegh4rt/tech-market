@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function ItemCount(props) {
-    const {data} = props
+    const {quantity} = props
     const [count, setCount] = useState(1)
     const classes = useStyles();
 
@@ -30,13 +30,12 @@ export default function ItemCount(props) {
     }
 
     const operatorplus = () => {
-      setCount((count) => (Math.min(count + 1, data[0].quantity)))
+      setCount((count) => (Math.min(count + 1, quantity)))
     }
 
  return (
    <Grid container className={classes.root} spacing={2}>
      <Card className={classes.card}>
-      <h1>{data[0].name}</h1>
       <div>
       <Button onClick={operatorminus}>-</Button>
           <div>{count}</div>
