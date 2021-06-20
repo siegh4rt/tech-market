@@ -1,13 +1,6 @@
 import React from 'react';
-import ItemCount from '../ItemCount/ItemCount';
-
-const data = [
-    {
-        name: 'televisor',
-        quantity: 4
-    }
-]
+import ItemList from '../ItemList/ItemList';
 
 export default function ItemListContainer() {
-    return <ItemCount  data={data}/>
+    return <ItemList/>
 }
