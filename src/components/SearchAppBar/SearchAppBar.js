@@ -1,13 +1,9 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import { makeStyles } from '@material-ui/core/styles';
+import {AppBar, Toolbar, IconButton, Typography, InputBase, makeStyles } from '@material-ui/core';
 import { SearchAppBarStyle } from './searchApBarStyle';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
 import {CardWidget} from '../CardWidget/CardWidget'
 
 const useStyles = makeStyles((theme) => SearchAppBarStyle(theme))
@@ -28,9 +24,8 @@ export default function SearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            <a href="#">Home</a>
-            <a href="#">About us</a>
-            <a href="#">Contact</a>
+            <Link to="/">Home</Link>
+            <Link to="/menu">Menu</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
