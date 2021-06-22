@@ -14,13 +14,13 @@ const useStyles = makeStyles({
 })
 
 const ItemList = () => {
-    const [menuItems, setMenuItems] = useState([]);
-    const [foodType, setFoodType] = useState('pasta');
+    const [data, setData] = useState([]);
+    //const [foodType, setFoodType] = useState('pasta');
     const [anchorEl, setAnchorEl] = useState(null);
 
     function getData() {
-        axios.get(`https://api.spoonacular.com/food/menuItems/search?query=${foodType}&number=50&apiKey=394b01c061234235b4ceb4971f7e6a55`)
-            .then(response => setMenuItems(response.data.menuItems))
+        axios.get(`https://api.artic.edu/api/v1/artworks`)
+            .then(response => setData(response.data.data))
             .catch(err => {
                 console.error(err);
             });
@@ -28,7 +28,7 @@ const ItemList = () => {
 
     useEffect(() => {
         getData();
-    }, [foodType])
+    }, [])
 
     const classes = useStyles();
 
@@ -38,13 +38,13 @@ const ItemList = () => {
 
     const handleClose = (e) => {
         setAnchorEl(null);
-        setFoodType(e.currentTarget.innerText)
+        //setFoodType(e.currentTarget.innerText)
     };
 
     const changePageWithProductDetail = (idPage) => {
-        const productDetail = menuItems.filter(idPage)
-        console.log(productDetail)
-        return <ItemDetail {...productDetail}/>
+        const itemDetail = data.filter(idPage)
+        console.log(itemDetail)
+        return <ItemDetail {...itemDetail}/>
     }
 
     return (
@@ -74,9 +74,9 @@ const ItemList = () => {
                 className={classes.contentCard}
             >
                 {
-                    menuItems && menuItems.length &&
-                    menuItems.map((product, i) => {
-                        return <Item {...product} changePageWithProductDetail={changePageWithProductDetail}/>
+                    data && data.length &&
+                    data.map((item, i) => {
+                        return <Item {...item} changePageWithProductDetail={changePageWithProductDetail}/>
                     })
                 }
             </Grid>

@@ -16,14 +16,14 @@ const useStyles = makeStyles({
 
 const Item = props => {
     const classes = useStyles();
-    const { title, restaurantChain, image, quantity, id, changePageWithProductDetail } = props;
+    const { title, thumbnail:{lqip}, quantity, id, artist_display, changePageWithProductDetail } = props;
 
     return (
         <Card className={classes.root} key={id}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image={image}
+                    image={lqip}
                     title="product image"
                 />
                 <CardContent>
@@ -31,7 +31,7 @@ const Item = props => {
                         {title}
                     </Typography>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Restaurant: {restaurantChain}
+                        artist: {artist_display}
                     </Typography>
                 </CardContent>
             </CardActionArea>
