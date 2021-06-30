@@ -1,15 +1,16 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import ItemListContainer from '../components/ItemListContainer/ItemListContainer';
-import HomeContainer from '../components/HomeContainer/HomeContainer'
+import ItemDetailContainer from '../screens/ItemDetailContainer';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/'>
+        <Route exact path='/'>
           <ItemListContainer />
         </Route>
+        <Route path={"/detail/:name"} render={ (props) => <ItemDetailContainer {...props}/>}/>
       </Switch>
     </BrowserRouter>
   )

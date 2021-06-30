@@ -4,7 +4,8 @@ import { SearchAppBarStyle } from './searchApBarStyle';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
-import {CardWidget} from '../CardWidget/CardWidget'
+import {CardWidget} from '../CardWidget/CardWidget';
+
 
 const useStyles = makeStyles((theme) => SearchAppBarStyle(theme))
 

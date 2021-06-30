@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function ItemCount(props) {
-  const { quantity } = props
+  const { quantity, typeQuantity } = props
   const [count, setCount] = useState(1)
   const classes = useStyles();
 
@@ -34,7 +34,7 @@ export default function ItemCount(props) {
     <Grid container className={classes.root} spacing={2}>
       <div>
         <Button onClick={operatorminus}>-</Button>
-        <div>{count}</div>
+        <div>{count}{typeQuantity}</div>
         <Button onClick={operatorplus}>+</Button>
       </div>
     </Grid>

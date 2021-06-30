@@ -1,6 +1,7 @@
 import React from 'react'
 import {makeStyles, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Button} from '@material-ui/core';
 import ItemCount from '../ItemCount/ItemCount';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -16,29 +17,37 @@ const useStyles = makeStyles({
 
 const Item = props => {
     const classes = useStyles();
-    const { title, thumbnail:{lqip}, quantity, id, artist_display, changePageWithProductDetail } = props;
+    const { name, image, quantity, typeQuantity, price, description, category} = props;
 
     return (
-        <Card className={classes.root} key={id}>
+        <Card className={classes.root}>
             <CardActionArea>
-                <CardMedia
+                <Link to={`/detail/${name}`}><CardMedia
                     className={classes.media}
-                    image={lqip}
+                    image={image}
                     title="product image"
-                />
+                /></Link>
+                
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {title}
+                        {name}
                     </Typography>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        artist: {artist_display}
+                    <Typography gutterBottom variant="h5" component="h6">
+                        {category}
+                    </Typography>
+                    <Typography gutterBottom variant="h5" component="h6">
+                        {description}
+                        {price}
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <ItemCount quantity={quantity} />
+            <ItemCount 
+            quantity={quantity}
+            typeQuantity={typeQuantity}
+            />
             <CardActions className={classes.contentButtons}>
-                <Button onClick={()=>changePageWithProductDetail(id)}>
-                    See more
+                <Button variant="contained">
+                    Add to car
                 </Button>
             </CardActions>
         </Card>
