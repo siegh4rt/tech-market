@@ -1,15 +1,23 @@
-import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import SearchAppBar from '../../components/SearchAppBar/SearchAppBar';
+import React, {useState} from 'react'
+import SearchAppBar from '../../components/SearchAppBar/SearchAppBar'
 import Router from '../../Routes/Router'
+import {BrowserRouter} from 'react-router-dom';
 
 const AppContent = () => {
-  return (
-    <BrowserRouter>
-      <SearchAppBar />
-      <Router/>
-    </BrowserRouter>
-  )
+    const [targeProduct, setTargetProduct] = useState('');
+
+    function getTargetProduct(e) {
+        const targetProductSelected = e;
+        setTargetProduct(targetProductSelected);
+    }
+
+    return (
+        <BrowserRouter>
+            <SearchAppBar getTargetProduct={getTargetProduct}/>
+            <Router targetProductSelected={targeProduct}/>
+        </BrowserRouter>
+    )
 }
 
-export default AppContent
+
+export default AppContent;

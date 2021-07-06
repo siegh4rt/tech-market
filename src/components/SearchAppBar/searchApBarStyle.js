@@ -12,13 +12,19 @@ export const SearchAppBarStyle = theme => {
       title: {
         flexGrow: 1,
         display: 'none',
+        alignItems: 'center',
+        textTransform: 'Capitalize',
         [theme.breakpoints.up('sm')]: {
-          display: 'block',
+          display: 'flex',
         },
         '& a': {
           padding: theme.spacing(0, 2),
           color: 'inherit',
           textDecoration: 'none'
+        },
+        '& button': {
+          color: 'white',
+          textTranform: 'Capitalize'
         }
       },
       search: {

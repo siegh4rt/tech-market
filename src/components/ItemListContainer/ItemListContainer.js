@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import axios from 'axios';
 
-export default function ItemListContainer() {
+export default function ItemListContainer(props) {
+    const {targetProductSelected} = props
     const [data, setData] = useState([]);
 
     function getData() {
@@ -17,5 +18,10 @@ export default function ItemListContainer() {
         getData();
     }, [data])
 
-    return <ItemList data={data}/>
+    return(
+        <ItemList
+            data={data}
+            targetProductSelected={targetProductSelected}
+        />
+    )
 }

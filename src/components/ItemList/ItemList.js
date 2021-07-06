@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, makeStyles, Button, Menu, MenuItem } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import Item from '../Item/Item';
-
 
 const useStyles = makeStyles({
     root: {
@@ -13,37 +12,22 @@ const useStyles = makeStyles({
 })
 
 const ItemList = (props) => {
-    const { data } = props
-    const [anchorEl, setAnchorEl] = useState(null);
-
+    const { data, targetProductSelected } = props;
+    const [filter, setFilter] = useState("")
     const classes = useStyles();
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
+    const filterProducts = data => {
+       return  filter !== '' ? data.filter(product => product.category === filter) : data
+    }
 
-    const handleClose = (e) => {
-        setAnchorEl(null);
-    };
+    useEffect(()=> {
+        setFilter(targetProductSelected)
+    }, [data, targetProductSelected])
 
     return (
         <div className={classes.root}>
             <>
-                <Grid>
-                    <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                        Open Menu
-                    </Button>
-                    <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <MenuItem onClick={handleClose}>129884</MenuItem>
-                    </Menu>
-                </Grid>
-                <Grid
+               <Grid
                     container
                     direction="row"
                     justifyContent="space-between"
@@ -52,8 +36,8 @@ const ItemList = (props) => {
                 >
                     {
                         data.products && data.products.length &&
-                        data.products.map((item, i) => {
-                            return <Item {...item} />
+                        filterProducts(data.products).map((item, i) => {
+                            return <Item {...item} key={i} />
                         })
                     }
                 </Grid>

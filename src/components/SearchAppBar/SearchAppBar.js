@@ -1,17 +1,32 @@
-import React from 'react';
-import {AppBar, Toolbar, IconButton, Typography, InputBase, makeStyles } from '@material-ui/core';
+import React, {useState} from 'react';
+import { AppBar, Toolbar, IconButton, Typography, InputBase, makeStyles, Button, Menu, MenuItem } from '@material-ui/core';
 import { SearchAppBarStyle } from './searchApBarStyle';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
-import {CardWidget} from '../CardWidget/CardWidget';
+import { CardWidget } from '../CardWidget/CardWidget';
 
 
 const useStyles = makeStyles((theme) => SearchAppBarStyle(theme))
 
-export default function SearchAppBar() {
+export default function SearchAppBar(props) {
+  const {getTargetProduct} = props
   const classes = useStyles();
 
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (e) => {
+    setAnchorEl(null);
+    getTargetProduct(e.target.innerText);
+    
+  };
+
+  const categories = ['Nuts', 'Vegetals', 'Fruits', 'Flour', 'Drinks', 'dairy products', 'Mushrooms', 'grain'];
+  
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -26,7 +41,22 @@ export default function SearchAppBar() {
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             <Link to="/">Home</Link>
-            <Link to="/menu">Menu</Link>
+            <>
+              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                <Typography className={classes.title} variant="h6" noWrap>Categories</Typography>
+              </Button>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                {categories && categories.map((elem, i)=> {
+                   return <MenuItem key={i} onClick={handleClose}>{elem}</MenuItem>
+                })}
+              </Menu>
+            </>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -42,7 +72,7 @@ export default function SearchAppBar() {
             />
           </div>
           <div className={classes.shoppingCart}>
-            <CardWidget/>
+            <CardWidget />
           </div>
         </Toolbar>
       </AppBar>

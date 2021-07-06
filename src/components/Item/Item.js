@@ -1,5 +1,5 @@
 import React from 'react'
-import {makeStyles, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Button} from '@material-ui/core';
+import { makeStyles, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Button } from '@material-ui/core';
 import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 
@@ -17,17 +17,25 @@ const useStyles = makeStyles({
 
 const Item = props => {
     const classes = useStyles();
-    const { name, image, quantity, typeQuantity, price, description, category} = props;
+    const { name, image, quantity, typeQuantity, price, description, category, id } = props;
 
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                <Link to={`/detail/${name}`}><CardMedia
-                    className={classes.media}
-                    image={image}
-                    title="product image"
-                /></Link>
-                
+                <Link
+                    to={{
+                        pathname: `/${id}`,
+                        state: {
+                            data: props
+                        }
+                    }}
+                >
+                    <CardMedia
+                        className={classes.media}
+                        image={image}
+                        title="product image"
+                    />
+                </Link>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                         {name}
@@ -41,9 +49,9 @@ const Item = props => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <ItemCount 
-            quantity={quantity}
-            typeQuantity={typeQuantity}
+            <ItemCount
+                quantity={quantity}
+                typeQuantity={typeQuantity}
             />
             <CardActions className={classes.contentButtons}>
                 <Button variant="contained">
